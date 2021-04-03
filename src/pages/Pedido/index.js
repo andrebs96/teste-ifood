@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
+import Form from '../../components/Form'
 
 const Pedido = () => {
 
@@ -8,8 +9,8 @@ const Pedido = () => {
             <Card
                 title={`Passo X de Xs para a sua pizza 🍕`}
             >
-                <form
-                    // onSubmit=""
+                <Form
+                    title="Escolha o tipo de massa:"
                 >
                     <label htmlFor="alternativeId">
                         <input id="alternativeId" name="questionId" type="radio" value="0" />
@@ -30,7 +31,7 @@ const Pedido = () => {
                     <button type="submit" disabled="">
                         Próxima escolha
                     </button>
-                </form>
+                </Form>
             </Card>
         </Layout>
     )
