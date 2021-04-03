@@ -1,11 +1,12 @@
-import Landing from './components/Landing'
 import ResetStyles from './styles/reset'
 import GlobalStyles from './styles/global'
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+} from "react-router-dom"
+import Landing from './pages/Landing'
+import TipoDeMassa from './pages/TipoDeMassa'
 
 const App = () => (
   <Router>
@@ -16,7 +17,7 @@ const App = () => (
         <Landing />
       </Route>
       <Route path="/tipo-de-massa">
-        <Landing />
+        <TipoDeMassa />
       </Route>
     </Switch>
   </Router>

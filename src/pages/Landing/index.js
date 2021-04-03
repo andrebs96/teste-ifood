@@ -1,5 +1,5 @@
 import * as S from './styled'
-import Logo from '../Logo'
+import Logo from '../../components/Logo'
 
 const Landing = () => (
     <S.LandingWrapper>

@@ -26,7 +26,7 @@ export const LandingLink = styled(Link)`
     background-color: var(--white);
     cursor: pointer;
     padding: 1rem 2.5rem;
-    border: 1px solid var(--borders); 
+    border: 1px solid var(--generic-color); 
     border-radius: 4px;
     font-weight: bold;
     color: var(--primary-color);
@@ -34,6 +34,6 @@ export const LandingLink = styled(Link)`
     text-transform: uppercase;
 
     &:hover {
-        background-color: var(--borders);
+        background-color: var(--generic-color);
     }
 `
