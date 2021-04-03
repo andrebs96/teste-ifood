@@ -1,6 +1,7 @@
 import Logo from '../Logo'
 import * as S from './styled'
 import { Link } from "react-router-dom"
+import PropTypes from 'prop-types'
 
 const Layout = ({ children }) => (
     <S.LayoutWrapper>
@@ -12,5 +13,9 @@ const Layout = ({ children }) => (
         <S.LayoutMain>{children}</S.LayoutMain>
     </S.LayoutWrapper>
 )   
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired,
+}
 
 export default Layout

@@ -6,7 +6,7 @@ import {
   Route
 } from "react-router-dom"
 import Landing from './pages/Landing'
-import TipoDeMassa from './pages/TipoDeMassa'
+import Pedido from './pages/Pedido'
 
 const App = () => (
   <Router>
@@ -16,8 +16,11 @@ const App = () => (
       <Route exact path="/">
         <Landing />
       </Route>
-      <Route path="/tipo-de-massa">
-        <TipoDeMassa />
+      <Route path="/pedido">
+        <Pedido />
+      </Route>
+      <Route path="*">
+        <Landing />
       </Route>
     </Switch>
   </Router>
