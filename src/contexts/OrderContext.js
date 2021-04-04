@@ -13,29 +13,29 @@ const OrderProvider = ({ children }) => {
         { id: 7, flavor: 'Frango com catupiry', typeDough: 'Tradicional', size: 'Média', promotionalDay: 'Saturday' },
     ])
 
-    const [options] = useState([
+    const [steps] = useState([
         {
-            id: 1,
             text: 'Escolha o tipo de massa:',
-            typeDough: [
+            type: 'dough',
+            options: [
                 'Tradicional',
                 'Nova-iorquina',
                 'Siciliana',
             ]
         },
         {
-            id: 2,
             text: 'Escolha o tamanho:',
-            size: [
+            type: 'size',
+            options: [
                 'Pequena',
                 'Média',
                 'Grande'
             ]
         },
         {
-            id: 3,
             text: 'Escolha o sabor:',
-            flavor: [
+            type: 'flavor',
+            options: [
                 '4 queijos',
                 'Calabresa',
                 'Frango com catupiry',
@@ -50,7 +50,7 @@ const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState()
 
     return(
-        <OrderContext.Provider value={{ carte, options, order, setOrder }}>
+        <OrderContext.Provider value={{ carte, steps, order, setOrder }}>
             { children }
         </OrderContext.Provider>
     )

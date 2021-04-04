@@ -9,6 +9,7 @@ export const CardTitle = styled.div`
     border-top-right-radius: 4px;
     color: var(--white);
     font-weight: bold;
+    line-height: 1.5rem;
     padding: 18px;
     text-align: center;
 `

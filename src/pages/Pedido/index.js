@@ -2,61 +2,72 @@ import { useContext, useState } from 'react'
 import { OrderContext } from '../../contexts/OrderContext'
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
-import Form from '../../components/Form'
-import Label from '../../components/Label'
+import Options from './components/Options'
 
 const Pedido = () => {
 
     const context = useContext(OrderContext)
 
-    const { options } = context
+    const [completeOrder, setCompleteOrder] = useState(false)
 
-    const [massa, setMassa] = useState('')
+    const { steps } = context
+    const totalSteps = steps.length
+
+    const [currentStep, setCurrentStep] = useState(0)
+    const stepIndex = currentStep
+    const step = steps[stepIndex]
+    const { options, text, type } = step
+
+    const [selected, setSelected] = useState('')
+    const [optionsSelected, setOptionsSelected] = useState(null)
+    const currentChoice = {}
 
     const onChangeLabel = (event) => {
-        setMassa(event.target.value)
+
+        const { value } = event.target
+
+        setSelected(value) 
+
+        currentChoice[type] = value
+
+        stepIndex === 0 ? setOptionsSelected(currentChoice) : setOptionsSelected(Object.assign(optionsSelected, currentChoice))
+
+        const nextStep = stepIndex + 1
+        
+        if (nextStep < totalSteps) {
+            return setCurrentStep(nextStep)
+        } 
+        
+        return setCompleteOrder(true)
+
     }
 
     return (
         <Layout>
-            <Card
-                title={`Passo 1 de ${options.length} para a sua pizza 🍕`}
-            >
-                <Form title="Escolha o tipo de massa:">
-                    <Label
-                        id="tradicional"
-                        name="questionId"
-                        text="Tradicional"
-                        checked={massa}
-                        onChange={onChangeLabel}
-                        value="tradicional"
-                    />
-                    <Label
-                        id="1"
-                        name="questionId"
-                        text="Alternative 1"
-                        checked={massa}
-                        onChange={onChangeLabel}
-                        value="1"
-                    />
-                    <Label
-                        id="2"
-                        name="questionId"
-                        text="Alternative 2"
-                        checked={massa}
-                        onChange={onChangeLabel}
-                        value="2"
-                    />
-                    <Label
-                        id="3"
-                        name="questionId"
-                        text="Alternative 3"
-                        checked={massa}
-                        onChange={onChangeLabel}
-                        value="3"
-                    />
-                </Form>
-            </Card>
+            {!completeOrder && (
+                <Options 
+                    currentStep={currentStep + 1}
+                    onChange={onChangeLabel}
+                    options={options}
+                    selected={selected}
+                    textForm={text}
+                    totalSteps={totalSteps}
+                />
+            )}
+                
+            {completeOrder && (
+                <Card
+                    title={`BOM APETITE!`}
+                >
+                    <p style={{textAlign: 'center'}}>
+                        Uma pizza {optionsSelected.size} de {optionsSelected.flavor} com massa {optionsSelected.dough} 
+                        <br />
+                        está sendo preparada para você!
+                    </p>
+                    <br/>
+                    <img src="https://media.giphy.com/media/J3bafobsatIqc/source.gif" width="100%" alt="Pedido finalizado" />
+                </Card>
+            )}
         </Layout>
     )
 }
