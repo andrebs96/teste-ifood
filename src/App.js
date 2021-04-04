@@ -1,3 +1,4 @@
+import OrderProvider from './contexts/OrderContext'
 import ResetStyles from './styles/reset'
 import GlobalStyles from './styles/global'
 import {
@@ -9,21 +10,23 @@ import Landing from './pages/Landing'
 import Pedido from './pages/Pedido'
 
 const App = () => (
-  <Router>
+  <OrderProvider>
     <ResetStyles />
     <GlobalStyles />
-    <Switch>
-      <Route exact path="/">
-        <Landing />
-      </Route>
-      <Route path="/pedido">
-        <Pedido />
-      </Route>
-      <Route path="*">
-        <Landing />
-      </Route>
-    </Switch>
-  </Router>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route path="/pedido">
+          <Pedido />
+        </Route>
+        <Route path="*">
+          <Landing />
+        </Route>
+      </Switch>
+    </Router>
+  </OrderProvider>
 )
 
 export default App

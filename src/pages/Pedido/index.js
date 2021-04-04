@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { OrderContext } from '../../contexts/OrderContext'
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
 import Form from '../../components/Form'
 import Label from '../../components/Label'
 
 const Pedido = () => {
+
+    const context = useContext(OrderContext)
+
+    const { options } = context
 
     const [massa, setMassa] = useState('')
 
@@ -15,7 +20,7 @@ const Pedido = () => {
     return (
         <Layout>
             <Card
-                title={`Passo 1 de 3 para a sua pizza 🍕`}
+                title={`Passo 1 de ${options.length} para a sua pizza 🍕`}
             >
                 <Form title="Escolha o tipo de massa:">
                     <Label
