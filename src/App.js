@@ -15,7 +15,7 @@ const App = () => (
   <OrderProvider>
     <ResetStyles />
     <GlobalStyles />
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/">
           <Landing />
