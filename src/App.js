@@ -9,6 +9,7 @@ import {
 import Landing from './pages/Landing'
 import Pedido from './pages/Pedido'
 import Recomendacao from './pages/Recomendacao'
+import NotFound from './pages/NotFound'
 
 const App = () => (
   <OrderProvider>
@@ -26,7 +27,7 @@ const App = () => (
           <Recomendacao />
         </Route>
         <Route path="*">
-          <Landing />
+          <NotFound />
         </Route>
       </Switch>
     </Router>
