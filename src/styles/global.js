@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
     body {
         font-family: "SulSans", Helvetica, sans-serif;
     }
+    a {
+        text-decoration: none;
+    }
 `
 
 export default GlobalStyles 

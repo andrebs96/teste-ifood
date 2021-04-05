@@ -8,6 +8,7 @@ import {
 } from "react-router-dom"
 import Landing from './pages/Landing'
 import Pedido from './pages/Pedido'
+import Recomendacao from './pages/Recomendacao'
 
 const App = () => (
   <OrderProvider>
@@ -20,6 +21,9 @@ const App = () => (
         </Route>
         <Route path="/pedido">
           <Pedido />
+        </Route>
+        <Route path="/pizza-do-dia">
+          <Recomendacao />
         </Route>
         <Route path="*">
           <Landing />
